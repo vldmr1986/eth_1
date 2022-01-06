@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -12,22 +12,25 @@ contract NFTCollectible is ERC721Enumerable, Ownable {
 
     Counters.Counter private _tokenIds;
 
-    uint public constant MAX_SUPPLY = 100; // collection length
-    uint public constant PRICE = 0.01 ether;    // price per item
-    uint public constant MAX_PER_MINT = 5;  // mint count per transaction 
+    uint public constant MAX_SUPPLY = 10; // collection length
+    uint public constant PRICE = 0.0001 ether;    // price per item
+    uint public constant MAX_PER_MINT = 2;  // mint count per transaction 
+    uint public constant MAX_RESERVE = 3;    // set 0 if no need reserve
 
     string public baseTokenURI;
+    string public contractURI;
 
-    constructor(string memory baseURI) ERC721("NFT Collectible", "NFTC") {
+    constructor(string memory baseURI, string memory baseContractURI) ERC721("Bushma Accessories Collection", "LA") {
         setBaseURI(baseURI);
+        setContractURI(baseContractURI);
     }
 
     function reserveNFTs() public onlyOwner {
         uint totalMinted = _tokenIds.current();
 
-        require(totalMinted.add(10) < MAX_SUPPLY, "Not enough NFTs left to reserve");
+        require(totalMinted.add(MAX_RESERVE) < MAX_SUPPLY, "Not enough NFTs left to reserve");
 
-        for (uint i = 0; i < 10; i++) {
+        for (uint i = 0; i < MAX_RESERVE; i++) {
             _mintSingleNFT();
         }
     }
@@ -36,8 +39,13 @@ contract NFTCollectible is ERC721Enumerable, Ownable {
         return baseTokenURI;
     }
 
+
     function setBaseURI(string memory _baseTokenURI) public onlyOwner {
         baseTokenURI = _baseTokenURI;
+    }
+
+    function setContractURI(string memory _contractURI) public onlyOwner {
+        contractURI = _contractURI;
     }
 
     function mintNFTs(uint _count) public payable {
@@ -76,5 +84,4 @@ contract NFTCollectible is ERC721Enumerable, Ownable {
         (bool success, ) = (msg.sender).call{value: balance}("");
         require(success, "Transfer failed.");
     }
-
 }

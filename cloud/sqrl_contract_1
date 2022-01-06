@@ -1,0 +1,8 @@
+{
+  "name": "Bushma Los Angeles",
+  "description": "Bushma Premium Accesories",
+  "image": "ipfs://QmaZ6hMGzYuQbMJporc6NQSktJnG4VubfWDK99dZafbDwR/00.png",
+  "external_link": "https://bushma.com",
+  "seller_fee_basis_points": 100,
+  "fee_recipient": "0xAA41cd650626ddFDac20a2f417C4A4B33Aab7f9F"
+}

@@ -1,0 +1,15 @@
+{
+    "name": "NFT Collectible #0", 
+    "description": "A collection of 100 NFT Collectibles", 
+    "image": "ipfs://QmaZ6hMGzYuQbMJporc6NQSktJnG4VubfWDK99dZafbDwR/00.png", 
+    "attributes": [
+        {"trait_type": "Background", "value": "Scotch Mist"}, 
+        {"trait_type": "Body", "value": "Robot"}, 
+        {"trait_type": "Eyes", "value": "Sunglasses"}, 
+        {"trait_type": "Head Gear", "value": "Violet Crown"}, 
+        {"trait_type": "Clothes", "value": "Red Stars"}, 
+        {"trait_type": "Held Item", "value": "Swim Ring"}, 
+        {"trait_type": "Hands", "value": "Standard"}, 
+        {"trait_type": "Watermark", "value": "Scrappy Squirrel"}
+    ]
+}
